@@ -9,6 +9,7 @@ export default function App() {
       <Text>Hello World!</Text>
       <Button title="Tap me!" />
     </View>
+    // testing
   );
 }
 
