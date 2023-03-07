@@ -7,7 +7,7 @@ export default function App() {
         <TextInput style={styles.textInput} placeholder="To Do List" />
         <Button title="Add To Do" />
       </View>
-      <View>
+      <View style={styles.todosContainer}>
         <Text>List....</Text>
       </View>
     </View>
@@ -16,19 +16,27 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
+    flex: 1,
     padding: 50,
+    paddingHorizontal: 16,
   },
   inputContainer: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24, //spacing between the input text and the list marginbottom is beeter than padding
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
   },
   textInput: {
     borderWidth: 1,
     borderColor: "#cccccc",
-    width: "80%",
+    width: "70%",
     marginRight: 8,
     padding: 8,
   },
+  todosContainer: {
+    flex: 5,
+  }
 });
-
-//1.17
