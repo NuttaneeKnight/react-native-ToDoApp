@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 export default function App() {
   return (
     <View style={styles.appContainer}>
-      <View styles={styles.inputContainer}>
+      <View style={styles.inputContainer}>
         <TextInput style={styles.textInput} placeholder="To Do List" />
         <Button title="Add To Do" />
       </View>
