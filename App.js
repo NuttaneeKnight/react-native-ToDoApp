@@ -1,14 +1,33 @@
+import { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
+  const [enteredTodoText, setEnteredTodoText] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  function todoInputHandler(enteredText) {
+    setEnteredTodoText(enteredText);
+  }
+
+  function addTodoHandler() {
+    setTodos((currentTodos) => [...currentTodos, enteredTodoText]);
+  }
   return (
     <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder="To Do List" />
-        <Button title="Add To Do" />
+        <TextInput
+          style={styles.textInput}
+          placeholder="To Do List"
+          onChangeText={todoInputHandler}
+        />
+        <Button title="Add To Do" onPress={addTodoHandler} />
       </View>
       <View style={styles.todosContainer}>
-        <Text>List....</Text>
+        {todos.map((todo) => (
+          <View style={styles.todoList} key={todo}>
+            <Text style={styles.todoText}>{todo}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -38,5 +57,15 @@ const styles = StyleSheet.create({
   },
   todosContainer: {
     flex: 5,
-  }
+  },
+  todoList: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: "#5e0acc",
+    color: "white",
+  },
+  todoText: {
+    color: "white",
+  },
 });
