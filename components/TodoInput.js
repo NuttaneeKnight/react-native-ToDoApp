@@ -56,10 +56,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 24, //spacing between the input text and the list marginbottom is beeter than padding
     padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
+    backgroundColor: "grey",
   },
   image: {
     width: 100,
