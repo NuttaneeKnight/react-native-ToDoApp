@@ -18,6 +18,7 @@ function TodoInput(props) {
         style={styles.textInput}
         placeholder="To Do List"
         onChangeText={todoInputHandler}
+        value={enteredTodoText}
       />
       <Button title="Add To Do" onPress={addTodoHandler} />
     </View>

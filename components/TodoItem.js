@@ -1,10 +1,17 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 
 function GoalItem(props) {
   return (
-    <View style={styles.todoList}>
-      <Text style={styles.todoText}>{props.text}</Text>
-    </View>
+    <Pressable
+      android_ripple={{ color: "lightgrey" }}
+      onPress={props.onDeleteTodo.bind(this, props.id)}
+    >
+      <View style={styles.todoList}>
+        <View style={styles.todoText}>
+          <Text style={styles.todoText}>{props.text}</Text>
+        </View>
+      </View>
+    </Pressable>
   );
 }
 
@@ -15,7 +22,10 @@ const styles = StyleSheet.create({
     margin: 8,
     padding: 8,
     borderRadius: 6,
-    backgroundColor: "#5e0acc",
+    backgroundColor: "#36454F",
+    color: "white",
+  },
+  todoText: {
     color: "white",
   },
 });

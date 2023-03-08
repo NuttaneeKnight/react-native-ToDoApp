@@ -13,6 +13,13 @@ export default function App() {
       { text: enteredTodoText, id: Math.random().toString() },
     ]);
   }
+
+  function deleteTodoHandler(id) {
+    setTodos((currentTodos) => {
+      return currentTodos.filter((todo) => todo.id !== id);
+    });
+  }
+
   return (
     <View style={styles.appContainer}>
       <TodoInput onAddTodo={addTodoHandler} />
@@ -20,7 +27,13 @@ export default function App() {
         <FlatList
           data={todos}
           renderItem={(itemData) => {
-            return <GoalItem text={itemData.item.text} />;
+            return (
+              <GoalItem
+                text={itemData.item.text}
+                id={itemData.item.id}
+                onDeleteTodo={deleteTodoHandler}
+              />
+            );
           }}
           keyExtractor={(item, index) => {
             return item.id;
@@ -40,8 +53,5 @@ const styles = StyleSheet.create({
   },
   todosContainer: {
     flex: 5,
-  },
-  todoText: {
-    color: "white",
   },
 });
