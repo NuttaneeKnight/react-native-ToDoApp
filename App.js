@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, View, FlatList, Button } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import GoalItem from "./components/TodoItem";
 import TodoInput from "./components/TodoInput";
@@ -31,6 +32,8 @@ export default function App() {
   }
 
   return (
+    <>
+    <StatusBar />
     <View style={styles.appContainer}>
       <Button
         title="Add New To do"
@@ -61,6 +64,7 @@ export default function App() {
         />
       </View>
     </View>
+    </>
   );
 }
 
