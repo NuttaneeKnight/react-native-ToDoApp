@@ -34,7 +34,7 @@ export default function App() {
     <View style={styles.appContainer}>
       <Button
         title="Add New To do"
-        color="#FC6A03"
+        color="#36454F"
         onPress={startAddTodoHandler}
       />
       <TodoInput
