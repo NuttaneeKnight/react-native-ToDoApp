@@ -46,17 +46,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 24, //spacing between the input text and the list marginbottom is beeter than padding
+    padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
   },
   textInput: {
     borderWidth: 1,
     borderColor: "#cccccc",
-    width: "70%",
+    width: "100%",
     marginRight: 8,
     padding: 8,
   },
   buttonContainer: {
+    marginTop: 16,
     flexDirection: "row",
   },
   button: {
