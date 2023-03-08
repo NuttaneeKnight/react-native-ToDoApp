@@ -21,7 +21,18 @@ function TodoInput(props) {
           onChangeText={todoInputHandler}
           value={enteredTodoText}
         />
-        <Button title="Add To Do" color="#FC6A03" onPress={addTodoHandler} />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button
+              title="Add To Do"
+              color="#36454F"
+              onPress={addTodoHandler}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" color="#FC6A03" onPress={""} />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -32,8 +43,7 @@ export default TodoInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 24, //spacing between the input text and the list marginbottom is beeter than padding
     borderBottomWidth: 1,
@@ -45,5 +55,12 @@ const styles = StyleSheet.create({
     width: "70%",
     marginRight: 8,
     padding: 8,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+  },
+  button: {
+    width: 100,
+    marginHorizontal: 8,
   },
 });
