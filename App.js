@@ -33,37 +33,37 @@ export default function App() {
 
   return (
     <>
-    <StatusBar />
-    <View style={styles.appContainer}>
-      <Button
-        title="Add New To do"
-        color="#36454F"
-        onPress={startAddTodoHandler}
-      />
-      <TodoInput
-        visible={modalIsVisible}
-        onAddTodo={addTodoHandler}
-        onCancel={endAddTodoHandler}
-      />
-      <View style={styles.todosContainer}>
-        <FlatList
-          data={todos}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                id={itemData.item.id}
-                onDeleteTodo={deleteTodoHandler}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-          alwaysBounceVertical={false}
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add New To do"
+          color="#36454F"
+          onPress={startAddTodoHandler}
         />
+        <TodoInput
+          visible={modalIsVisible}
+          onAddTodo={addTodoHandler}
+          onCancel={endAddTodoHandler}
+        />
+        <View style={styles.todosContainer}>
+          <FlatList
+            data={todos}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteTodo={deleteTodoHandler}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+            alwaysBounceVertical={false}
+          />
+        </View>
       </View>
-    </View>
     </>
   );
 }
