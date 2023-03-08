@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+  FlatList,
+} from "react-native";
 
 export default function App() {
   const [enteredTodoText, setEnteredTodoText] = useState("");
@@ -23,11 +31,13 @@ export default function App() {
         <Button title="Add To Do" onPress={addTodoHandler} />
       </View>
       <View style={styles.todosContainer}>
-        {todos.map((todo) => (
-          <View style={styles.todoList} key={todo}>
-            <Text style={styles.todoText}>{todo}</Text>
-          </View>
-        ))}
+        <FlatList>
+          {todos.map((todo) => (
+            <View style={styles.todoList} key={todo}>
+              <Text style={styles.todoText}>{todo}</Text>
+            </View>
+          ))}
+        </FlatList>
       </View>
     </View>
   );
