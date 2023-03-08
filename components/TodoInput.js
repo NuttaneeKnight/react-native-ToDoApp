@@ -1,0 +1,46 @@
+import { View, TextInput, Button, StyleSheet } from "react-native";
+import { useState } from "react";
+
+function TodoInput(props) {
+  const [enteredTodoText, setEnteredTodoText] = useState("");
+
+  function todoInputHandler(enteredText) {
+    setEnteredTodoText(enteredText);
+  }
+
+  function addTodoHandler() {
+    props.onAddTodo(enteredTodoText);
+    setEnteredTodoText(""); // clear it everytiem we entered the text.
+  }
+  return (
+    <View style={styles.inputContainer}>
+      <TextInput
+        style={styles.textInput}
+        placeholder="To Do List"
+        onChangeText={todoInputHandler}
+      />
+      <Button title="Add To Do" onPress={addTodoHandler} />
+    </View>
+  );
+}
+
+export default TodoInput;
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24, //spacing between the input text and the list marginbottom is beeter than padding
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: "#cccccc",
+    width: "70%",
+    marginRight: 8,
+    padding: 8,
+  },
+});

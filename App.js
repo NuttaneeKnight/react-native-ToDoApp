@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { StyleSheet, View, Button, TextInput, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import GoalItem from "./components/TodoItem";
+import TodoInput from "./components/TodoInput";
 
 export default function App() {
-  const [enteredTodoText, setEnteredTodoText] = useState("");
   const [todos, setTodos] = useState([]);
 
-  function todoInputHandler(enteredText) {
-    setEnteredTodoText(enteredText);
-  }
-
-  function addTodoHandler() {
+  function addTodoHandler(enteredTodoText) {
     setTodos((currentTodos) => [
       ...currentTodos,
       { text: enteredTodoText, id: Math.random().toString() },
@@ -19,14 +15,7 @@ export default function App() {
   }
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="To Do List"
-          onChangeText={todoInputHandler}
-        />
-        <Button title="Add To Do" onPress={addTodoHandler} />
-      </View>
+      <TodoInput onAddTodo={addTodoHandler} />
       <View style={styles.todosContainer}>
         <FlatList
           data={todos}
@@ -48,22 +37,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 50,
     paddingHorizontal: 16,
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24, //spacing between the input text and the list marginbottom is beeter than padding
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: "#cccccc",
-    width: "70%",
-    marginRight: 8,
-    padding: 8,
   },
   todosContainer: {
     flex: 5,
