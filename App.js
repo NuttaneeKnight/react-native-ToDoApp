@@ -18,7 +18,10 @@ export default function App() {
   }
 
   function addTodoHandler() {
-    setTodos((currentTodos) => [...currentTodos, enteredTodoText]);
+    setTodos((currentTodos) => [
+      ...currentTodos,
+      { text: enteredTodoText, key: Math.random().toString() },
+    ]);
   }
   return (
     <View style={styles.appContainer}>
@@ -31,13 +34,17 @@ export default function App() {
         <Button title="Add To Do" onPress={addTodoHandler} />
       </View>
       <View style={styles.todosContainer}>
-        <FlatList>
-          {todos.map((todo) => (
-            <View style={styles.todoList} key={todo}>
-              <Text style={styles.todoText}>{todo}</Text>
-            </View>
-          ))}
-        </FlatList>
+        <FlatList
+          data={todos}
+          renderItem={(itemData) => {
+            return (
+              <View style={styles.todoList}>
+                <Text style={styles.todoText}>{itemData.item}</Text>
+              </View>
+            );
+          }}
+          alwaysBounceVertical={false}
+        />
       </View>
     </View>
   );
