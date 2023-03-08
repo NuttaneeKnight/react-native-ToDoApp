@@ -1,4 +1,4 @@
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
 import { useState } from "react";
 
 function TodoInput(props) {
@@ -13,15 +13,17 @@ function TodoInput(props) {
     setEnteredTodoText(""); // clear it everytiem we entered the text.
   }
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="To Do List"
-        onChangeText={todoInputHandler}
-        value={enteredTodoText}
-      />
-      <Button title="Add To Do" onPress={addTodoHandler} />
-    </View>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="To Do List"
+          onChangeText={todoInputHandler}
+          value={enteredTodoText}
+        />
+        <Button title="Add To Do" color="#FC6A03" onPress={addTodoHandler} />
+      </View>
+    </Modal>
   );
 }
 

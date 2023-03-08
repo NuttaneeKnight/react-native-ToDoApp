@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Button } from "react-native";
 
 import GoalItem from "./components/TodoItem";
 import TodoInput from "./components/TodoInput";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+
+  function startAddTodoHandler() {
+    setModalIsVisible(true);
+  }
 
   function addTodoHandler(enteredTodoText) {
     setTodos((currentTodos) => [
@@ -22,7 +27,12 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <TodoInput onAddTodo={addTodoHandler} />
+      <Button
+        title="Add New To do"
+        color="#FC6A03"
+        onPress={startAddTodoHandler}
+      />
+      <TodoInput visible={modalIsVisible} onAddTodo={addTodoHandler} />
       <View style={styles.todosContainer}>
         <FlatList
           data={todos}
