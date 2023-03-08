@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Pressable } from "react-native";
 function GoalItem(props) {
   return (
     <View style={styles.todoList}>
-      <View style={styles.todoText}>
+      <View>
         <Pressable
           android_ripple={{ color: "#D3D3D3" }}
           onPress={props.onDeleteTodo.bind(this, props.id)}

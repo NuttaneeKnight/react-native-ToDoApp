@@ -28,20 +28,20 @@ function TodoInput(props) {
         />
         <TextInput
           style={styles.textInput}
-          placeholder="To Do List"
+          placeholder="To Do ........"
           onChangeText={todoInputHandler}
           value={enteredTodoText}
         />
         <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Cancel" color="#FC6A03" onPress={props.onCancel} />
+          </View>
           <View style={styles.button}>
             <Button
               title="Add To Do"
               color="#36454F"
               onPress={addTodoHandler}
             />
-          </View>
-          <View style={styles.button}>
-            <Button title="Cancel" color="#FC6A03" onPress={props.onCancel} />
           </View>
         </View>
       </View>
@@ -66,9 +66,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "#cccccc",
+    backgroundColor: "#36454F",
+    borderColor: "#36454F",
+    color: "white",
+    borderRadius: 6,
     width: "100%",
-    padding: 8,
+    padding: 16,
   },
   buttonContainer: {
     marginTop: 16,
