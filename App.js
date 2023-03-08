@@ -12,11 +12,16 @@ export default function App() {
     setModalIsVisible(true);
   }
 
+  function endAddTodoHandler() {
+    setModalIsVisible(false);
+  }
+
   function addTodoHandler(enteredTodoText) {
     setTodos((currentTodos) => [
       ...currentTodos,
       { text: enteredTodoText, id: Math.random().toString() },
     ]);
+    endAddTodoHandler(); //went back to the main page
   }
 
   function deleteTodoHandler(id) {
@@ -32,7 +37,11 @@ export default function App() {
         color="#FC6A03"
         onPress={startAddTodoHandler}
       />
-      <TodoInput visible={modalIsVisible} onAddTodo={addTodoHandler} />
+      <TodoInput
+        visible={modalIsVisible}
+        onAddTodo={addTodoHandler}
+        onCancel={endAddTodoHandler}
+      />
       <View style={styles.todosContainer}>
         <FlatList
           data={todos}
