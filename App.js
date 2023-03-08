@@ -20,7 +20,7 @@ export default function App() {
   function addTodoHandler() {
     setTodos((currentTodos) => [
       ...currentTodos,
-      { text: enteredTodoText, key: Math.random().toString() },
+      { text: enteredTodoText, id: Math.random().toString() },
     ]);
   }
   return (
@@ -39,9 +39,12 @@ export default function App() {
           renderItem={(itemData) => {
             return (
               <View style={styles.todoList}>
-                <Text style={styles.todoText}>{itemData.item}</Text>
+                <Text style={styles.todoText}>{itemData.item.text}</Text>
               </View>
             );
+          }}
+          keyExtractor={(item, index) => {
+            return item.id;
           }}
           alwaysBounceVertical={false}
         />
